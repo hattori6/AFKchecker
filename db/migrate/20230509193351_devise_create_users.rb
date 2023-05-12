@@ -13,11 +13,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       ## Rememberable
       t.datetime :remember_created_at
-      t.string :name, null: false
+      t.string :name
       t.text :introduction
       t.time :start_time
       t.time :finish_time
-      t.integer :genre_id, null: false
+      t.integer :genre_id
       t.boolean :is_active, null: false, default: false
 
       ## Trackable
