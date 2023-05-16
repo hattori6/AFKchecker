@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     #ホーム画面
     get'top' => 'homes#top', as: 'top'
     #気分の選択
-    resources :feelings, only: [:index, :show, :edit, :create, :update, :destroy]
+    resources :feelings, only: [:index, :edit, :create, :update, :destroy]
     #ゲームジャンル
-    resources :genres, only: [:index, :show, :edit, :create, :update, :destroy]
+    resources :genres, only: [:index, :edit, :create, :update, :destroy]
     #ユーザー
     resources :users, only: [:index, :show, :edit, :update]
   end

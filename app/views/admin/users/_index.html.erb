@@ -10,15 +10,15 @@
 		<% users.each do |user| %>
 			<tr>
 				<td><%= user.id %></td>
-				<td><%= image_tag user.get_image(30,30) %></td>
+				<td><%= image_tag user.get_image(80,80) %></td>
 				<td><%= user.name %></td>
 				<td>
 					<% if user.is_active? %>
-						<span class="text-active">有効</span>
+						<span class="text-invalid">退会</span>
 					<% else %>
-						<span class="text-invalid">退会済み</span>
+						<span class="text-active">有効</span>
 					<% end %>
-		</td>
+				</td>
 				<td><%= link_to "詳細", admin_user_path(user), class: "btn btn-primary" %></td>
 			</tr>
 		<% end %>
