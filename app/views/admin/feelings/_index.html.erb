@@ -1,0 +1,12 @@
+<table class="feeling_info has_border">
+
+  <tbody>
+    <% feelings.each do |feeling| %>
+      <tr>
+        <td><%= feeling.feeling %></td>
+        <td class="text-center"><%= link_to "編集", edit_admin_feeling_path(feeling), class: "btn btn-success" %></td>
+        <td class="text-center"><%= link_to "削除", admin_feeling_path(feeling), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
