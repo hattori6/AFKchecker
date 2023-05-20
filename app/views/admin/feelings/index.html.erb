@@ -1,0 +1,11 @@
+<section class="inner">
+  <h2 class="section-title">気分選択用</h2>
+  <div class="mb3">
+    <h3>気分追加</h3>
+    <%= render 'form', feeling: @feeling, url: admin_feelings_path, submit: '登録' %>
+  </div>
+  <div class="mb3">
+    <h3>気分一覧</h3>
+    <%= render 'index', feelings: @feelings, url: admin_feelings_path %>
+  </div>
+</section>

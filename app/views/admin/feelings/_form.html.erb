@@ -1,0 +1,5 @@
+<%= form_with model:feeling, url: url do |f| %>
+	<%= render 'layouts/error', resource: feeling %>
+	<%= f.text_field :feeling %>
+	<%= f.submit submit, class: "btn btn-primary ml2" %>
+<% end %>

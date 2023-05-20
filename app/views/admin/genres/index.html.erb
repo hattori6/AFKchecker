@@ -1,0 +1,13 @@
+<section class="inner">
+  <h2 class="section-title">ゲームタイトル</h2>
+  <div class="mb3">
+    <h3>タイトル追加</h3>
+    <%= render 'form', genre: @genre, url: admin_genres_path, submit: '登録' %>
+  </div>
+  <div class="mb3">
+    <h3>タイトル一覧</h3>
+    <%= render 'index', genres: @genres, url: admin_genres_path %>
+  </div>
+</section>
+
+

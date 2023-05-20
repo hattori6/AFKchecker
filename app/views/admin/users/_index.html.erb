@@ -1,0 +1,26 @@
+<table class="admin_user_index has_border">
+  <thead>
+  <th>会員ID</th>
+		<th></th>
+		<th>名前</th>
+		<th>会員ステータス</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<% users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td>
+				<td><%= image_tag user.get_image(80,80) %></td>
+				<td><%= user.name %></td>
+				<td>
+					<% if user.is_active? %>
+						<span class="text-invalid">退会</span>
+					<% else %>
+						<span class="text-active">有効</span>
+					<% end %>
+				</td>
+				<td><%= link_to "詳細", admin_user_path(user), class: "btn btn-primary" %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
