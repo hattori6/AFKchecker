@@ -40,6 +40,11 @@
             <% end %>
           </li>
           <li>
+            <%=  link_to users_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-user-friends"></i> フレンド検索
+            <% end %>
+          </li>
+          <li>
             <%=  link_to new_post_path ,class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> 投稿する
             <% end %>

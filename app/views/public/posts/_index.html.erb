@@ -1,1 +1,29 @@
-      <%= render 'posts/index',posts: @posts %>
+<table class="posts_info">
+  <thead>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% posts.each do |posts| %>
+    <tr>
+      <td>時間</td>
+      <td><%= posts.start_time %> ~ <%= posts.finish_time %></td>
+    </tr>
+    <tr>
+      <td>ゲーム</td>
+      <td><%= posts.genre.name %></td>
+    </tr>
+    <tr>
+      <td>今日の気分</td>
+      <td><%= posts.feeling.feeling %></td>
+    </tr>
+    <tr>
+      <td>一言</td>
+      <td><%= posts.oneword %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "コメントする", post_path(posts) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

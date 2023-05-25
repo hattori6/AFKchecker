@@ -1,0 +1,5 @@
+<%= form_with(model:[post, comment], url: url do |f| %>
+  <%= render 'layouts/error', model: f.comment %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントする" %>
+  <%= f.submit "送信する" %>
+<% end %>
