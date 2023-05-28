@@ -26,7 +26,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    user_path
+    user_friends_path(current_user)
   end
 
   def after_sign_out_path_for(resource)

@@ -6,8 +6,12 @@
   <tbody>
     <% posts.each do |posts| %>
     <tr>
+      <td><%= posts.created_at.strftime('%m/%d') %></td>
+      <td></td>
+    </tr>
+    <tr>
       <td>時間</td>
-      <td><%= posts.start_time %> ~ <%= posts.finish_time %></td>
+      <td><%= posts.start_time.strftime('%H:%M') %> ~ <%= posts.finish_time.strftime('%H:%M') %></td>
     </tr>
     <tr>
       <td>ゲーム</td>

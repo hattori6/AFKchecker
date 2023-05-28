@@ -1,9 +1,44 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>User info</h2>
       <%= render 'info', user: @user %>
+      <div>
+        <% if @user.follow_request?(current_user, @user) %>
+          <div class="form-group">
+            <div class="schedule-item">
+              <div class="schedule-item-header text-left">
+                <p class="bold">You have follow request</p>
+              </div>
+              <div class="schedule-item-body text-left">
+                <p><%= @user.name %> requests you to be mate</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% if current_user.matchers?(@user) %>
+          <div class="form-group">
+            <div class="schedule-item">
+              <div class="schedule-item-header text-left">
+                <p class="bold"><%= @user.name %> is your mate</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% if current_user.id == @user.id %>
+        <% else %>
+          <% unless current_user.following?(@user) %>
+            <div class="actions">
+              <%= link_to 'フレンド申請を送信', user_relationships_path(@user.id), method: :post, class:"btn sign-up-btn" %>
+            </div>
+          <% else %>
+            <div class="actions">
+              <%= link_to 'フレンド申請を削除', user_relationships_path(@user.id), method: :delete, class:"btn sign-up-btn" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+
     <div class='col-md-8 offset-md-1'>
       <h2>過去の投稿</h2>
       <%= render 'public/posts/index', posts: @posts %>

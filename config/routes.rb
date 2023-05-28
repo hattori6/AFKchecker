@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about"
     #ユーザー
     resources :users, only: [:index, :show, :edit, :update] do
+    get 'friends' => 'users#friends', as: 'friends'
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'

@@ -6,26 +6,29 @@
       </div>
       <div class='col-md-8 offset-md-1'>
         <table class="posts_info">
-            <tr>
-              <td>時間</td>
-              <td><%= @post.start_time.strftime('%H:%M') %> ~ <%= @post.finish_time.strftime('%H:%M') %></td>
-            </tr>
-            <tr>
-              <td>ゲーム</td>
-              <td><%= @post.genre.name %></td>
-            </tr>
-            <tr>
-              <td>今日の気分</td>
-              <td><%= @post.feeling.feeling %></td>
-            </tr>
-            <tr>
-              <td>一言</td>
-              <td><%= @post.oneword %></td>
-            </tr>
-            <tr>
-              <td><%= render 'comments/form', post: @post, comment: @comment, url:  %></td>
-            </tr>
+           <tr>
+            <td>時間</td>
+            <td><%= @post.start_time.strftime('%H:%M') %> ~ <%= @post.finish_time.strftime('%H:%M') %></td>
+          </tr>
+          <tr>
+            <td>ゲーム</td>
+            <td><%= @post.genre.name %></td>
+          </tr>
+          <tr>
+            <td>今日の気分</td>
+            <td><%= @post.feeling.feeling %></td>
+          </tr>
+          <tr>
+            <td>一言</td>
+            <td><%= @post.oneword %></td>
+          </tr>
         </table>
+        <div>
+          <%= render 'public/comments/form', post: @post, comment: @comment %>
+        </div>
+        <div>
+          <%= render 'public/comments/post_comments', post: @post %>
+        </div>
       </div>
     </div>
   </div>
