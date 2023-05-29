@@ -13,6 +13,10 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc).limit(1)
   end
 
+  def requests
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts

@@ -1,0 +1,21 @@
+<div class="item-list-content">
+    <ul>
+      <% @users.each do |user| %>
+        <% unless current_user.id == user.id %>
+          <div class="each-item">
+            <div class="each-item-content">
+              <div class="item-content-right">
+                <% if user.follow_request?(current_user, user) %>
+                  <div onclick='window.location="<%= user_path(user) %>"' role="link">
+                    <p><%= image_tag user.get_image(200,200), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
+                    <p><%= user.name %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

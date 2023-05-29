@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     #ユーザー
     resources :users, only: [:index, :show, :edit, :update] do
     get 'friends' => 'users#friends', as: 'friends'
+    get 'requests' => 'users#requests', as: 'requests'
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
