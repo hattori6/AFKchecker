@@ -1,2 +1,30 @@
-<h1>Public::Users#index</h1>
-<p>Find me in app/views/public/users/index.html.erb</p>
+<section class="inner">
+<h2>ユーザー検索</h2>
+<%= render 'search', q: @q, url: users_path %>
+<table class="users has_border">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ユーザーネーム</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr onclick='window.location="<%= user_path(user) %>"' role="link">
+        <td><%= image_tag user.get_image(100,100) %></td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+        <td>
+          <% if current_user.following?(user) %>
+            <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
