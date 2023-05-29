@@ -1,7 +1,14 @@
 <table class='table'>
-  <tr><%= image_tag user.get_image(100,100) %></tr>
+  <tr><%= image_tag user.get_image(200,200), style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %></tr>
   <tr>
-    <h2><%= user.name %></h2>
+    <h2 class="text-center">
+      <%= user.name %>
+      <% if user.is_active? %>
+        <i class="fas fa-circle fa-xs" style="color:limegreen;"></i>
+      <% else %>
+        <i class="far fa-circle fa-xs" style="color:lightslategray;"></i>
+      <% end %>
+    </h2>
   </tr>
   <tr>
     <th>自己紹介</th>
@@ -12,11 +19,15 @@
     <th>
       <% if current_user.id == @user.id %>
         <%= form_with model:user, url: user_path(user), method: :patch do |f| %>
-          <%= f.select :is_active, [['オフライン',0],['オンライン',1]] %>
+          <%= f.select :is_active, [['オフライン',false],['オンライン',true]] %>
           <%= f.submit "更新", class: "btn btn-primary" %>
         <% end %>
       <% else %>
-        <%= user.is_active %>
+        <% if user.is_active? %>
+          <p class="text-success">オンライン</p>
+        <% else %>
+          <p class="text-danger">オフライン</p>
+        <% end %>
       <% end %>
     </th>
   </tr>

@@ -8,9 +8,9 @@ class Public::UsersController < ApplicationController
   def friends
     @mates = current_user.matchers
     @users = User.all
-    #@request = current_user.follow_request?
+    @online = User.where(is_active: "true")
     @user = User.find(params[:user_id])
-    #@user = user.followers
+    @posts = @user.posts.order(created_at: :desc).limit(1)
   end
 
   def show
@@ -31,14 +31,9 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def search
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).page(params[:page])
-  end
-
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :image)
+    params.require(:user).permit(:name, :introduction, :image, :is_active)
   end
 end
