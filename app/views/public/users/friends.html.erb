@@ -1,6 +1,6 @@
-<div class="item-list">
-  <div class="item-list-header">
-    <h2 class="bold">フレンド一覧</h2>
+<div class="container">
+  <h2 class="font-weight-bold">フレンド一覧</h2>
+  <div class="row">
     <h4>
       <%= link_to user_requests_path do %>
         <p><i class="fas fa-user-clock"></i>フレンドリクエスト</p>
@@ -8,7 +8,7 @@
     </h4>
   </div>
 
-  <div class="item-list-content">
+  <div>
     <div>
       <h4>オンライン</h4>
       <div class="d-flex justify-content-start">
@@ -22,15 +22,21 @@
                   <i class="fas fa-circle fa-xs" style="color:limegreen;"></i>
                 </p>
               </div>
-            <% else %>
-              <div>
-                <h4>オフライン</h4>
-                <div onclick='window.location="<%= user_path(user) %>"' role="link">
-                  <p><%= image_tag user.get_image(200,200), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
-                  <p>
-                    <%= user.name %>
-                  </p>
-                </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <h4>オフライン</h4>
+      <div class="d-flex justify-content-start">
+        <% @mates.each do |user| %>
+          <div class="w-25">
+            <% unless user.is_active? %>
+              <div onclick='window.location="<%= user_path(user) %>"' role="link">
+                <p><%= image_tag user.get_image(200,200), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
+                <p>
+                  <%= user.name %>
+                  <i class="far fa-circle fa-xs" style="color:lightslategray;"></i>
+                </p>
               </div>
             <% end %>
           </div>
@@ -38,3 +44,4 @@
       </div>
     </div>
   </div>
+</div>
