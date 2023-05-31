@@ -1,21 +1,19 @@
-<div class="item-list-content">
-    <ul>
+<h2 class="font-weight-bold">フレンドリクエスト</h2>
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-start">
       <% @users.each do |user| %>
         <% unless current_user.id == user.id %>
-          <div class="each-item">
-            <div class="each-item-content">
-              <div class="item-content-right">
-                <% if user.follow_request?(current_user, user) %>
-                  <div onclick='window.location="<%= user_path(user) %>"' role="link">
-                    <p><%= image_tag user.get_image(200,200), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
-                    <p><%= user.name %></p>
-                  </div>
-                <% end %>
+          <div class="m-3">
+            <% if user.follow_request?(current_user, user) %>
+              <div onclick='window.location="<%= user_path(user) %>"' role="link">
+                <p><%= image_tag user.get_image(200,200), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></p>
+                <p><%= user.name %></p>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>

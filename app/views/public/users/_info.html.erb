@@ -1,5 +1,5 @@
 <table class='table'>
-  <tr><%= image_tag user.get_image(200,200), style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %></tr>
+  <div class="text-center"><%= image_tag user.get_image(500,500), style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %></div>
   <tr>
     <h2 class="text-center">
       <%= user.name %>
@@ -20,13 +20,13 @@
       <% if current_user.id == @user.id %>
         <%= form_with model:user, url: user_path(user), method: :patch do |f| %>
           <%= f.select :is_active, [['オフライン',false],['オンライン',true]] %>
-          <%= f.submit "更新", class: "btn btn-primary" %>
+          <%= f.submit "更新", class: "btn btn-outline-info btn-sm" %>
         <% end %>
       <% else %>
         <% if user.is_active? %>
           <p class="text-success">オンライン</p>
         <% else %>
-          <p class="text-danger">オフライン</p>
+          <p class="text-secondary">オフライン</p>
         <% end %>
       <% end %>
     </th>

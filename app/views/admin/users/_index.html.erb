@@ -8,9 +8,10 @@
 	</thead>
 	<tbody>
 		<% users.each do |user| %>
+		<div class="mb-2">
 			<tr>
 				<td><%= user.id %></td>
-				<td><%= image_tag user.get_image(80,80) %></td>
+				<td><%= image_tag user.get_image(500,500), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %></td>
 				<td><%= user.name %></td>
 				<td>
 					<% if user.is_active? %>
@@ -21,6 +22,7 @@
 				</td>
 				<td><%= link_to "詳細", admin_user_path(user), class: "btn btn-primary" %></td>
 			</tr>
+		</div>
 		<% end %>
 	</tbody>
 </table>

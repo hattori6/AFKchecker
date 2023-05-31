@@ -1,47 +1,40 @@
-<div class='container px-5 px-sm-0'>
+<div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
+    <div class='col-md-5'>
       <%= render 'info', user: @user %>
-      <div>
+      <div class="mx-auto" style="width: 250px;">
         <% if @user.follow_request?(current_user, @user) %>
-          <div class="form-group">
-            <div class="schedule-item">
-              <div class="schedule-item-header text-left">
-                <p class="bold">You have follow request</p>
-              </div>
-              <div class="schedule-item-body text-left">
-                <p><%= @user.name %> requests you to be mate</p>
-              </div>
-            </div>
+          <div>
+            <p class="font-weight-bold">フレンドリクエストされています</p>
+          </div>
+          <div>
+            <p class="font-weight-bold">
+              フレンド申請を許可する
+              <%= link_to '許可', user_relationships_path(@user.id), method: :post, class:"btn btn-outline-info" %>
+            </p>
           </div>
         <% end %>
-        <% if current_user.matchers?(@user) %>
-          <div class="form-group">
-            <div class="schedule-item">
-              <div class="schedule-item-header text-left">
-                <p class="bold"><%= @user.name %> is your mate</p>
-              </div>
-            </div>
-          </div>
-        <% end %>
+
         <% if current_user.id == @user.id %>
         <% else %>
           <% unless current_user.following?(@user) %>
-            <div class="actions">
-              <%= link_to 'フレンド申請を送信', user_relationships_path(@user.id), method: :post, class:"btn sign-up-btn" %>
+            <div class="text-center">
+              <%= link_to 'フレンド申請を送信', user_relationships_path(@user.id), method: :post, class:"btn btn-outline-info" %>
             </div>
           <% else %>
-            <div class="actions">
-              <%= link_to 'フレンド申請を削除', user_relationships_path(@user.id), method: :delete, class:"btn sign-up-btn" %>
+            <div class="text-center">
+              <%= link_to 'フレンド申請を削除', user_relationships_path(@user.id), method: :delete, class:"btn btn-outline-danger" %>
             </div>
           <% end %>
         <% end %>
       </div>
     </div>
 
-    <div class='col-md-8 offset-md-1'>
-      <h2>過去の投稿</h2>
-      <%= render 'public/posts/index', posts: @posts %>
+    <div class='col-md-6 offset-md-1'>
+      <h2 class="text-center font-weight-bold">ゲーム時間</h2>
+      <div class="font-weight-bold mx-auto" style="width: auto;">
+        <%= render 'public/posts/index', posts: @posts %>
+      </div>
     </div>
   </div>
 </div>
