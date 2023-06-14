@@ -1,7 +1,21 @@
-<div>
-  <h1>ユーザー情報</h1>
-  <div>
-    <%= @user.name %>
+<h1>ユーザー情報</h1>
+<div class='container'>
+  <div class='row'>
+    <table class="table">
+      <tr>
+        <%= image_tag @user.get_image(500,500), style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %>
+      </tr>
+      <tr>
+        <h2 class="text-center">
+        <%= @user.name %>
+        <% if @user.is_active? %>
+          <i class="fas fa-circle fa-xs" style="color:limegreen;"></i>
+        <% else %>
+          <i class="far fa-circle fa-xs" style="color:lightslategray;"></i>
+        <% end %>
+        </h2>
+      </tr>
+    </table>
   </div>
 </div>
 
